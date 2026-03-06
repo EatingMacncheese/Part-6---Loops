@@ -9,6 +9,49 @@ namespace Part_6___Loops
     internal class Program
 
     {
+        static public void bMenu()
+        {
+            int response;
+            Console.WriteLine("type a number for the following program:");
+            Console.WriteLine();
+            Console.WriteLine("[1] Numbers");
+            Console.WriteLine("[2] Blorb ATM (W.I.P)");
+            Console.WriteLine("[3] Dice Game (W.I.P)");
+            Int32.TryParse(Console.ReadLine(), out response);
+            while (true)
+            {
+
+
+                if (response == 1)
+                {
+                    Console.Clear();
+                    number();
+                    break;
+                }
+                else if (response == 2)
+                {
+                    Console.Clear();
+                    Blorb();
+                    break;
+                }
+                else if (response == 3)
+                {
+                    Console.WriteLine("work in progress");
+                    Console.WriteLine("press Enter to go back");
+                    Console.ReadLine();
+                    Console.Clear();
+                    bMenu();
+
+                }
+                else
+                {
+                    Console.Clear();
+                    
+                    Console.WriteLine("not a number/out of selection range. try again");
+                    bMenu();
+                }
+            }
+        }
         static public void depositSec()
         {
 
@@ -189,39 +232,7 @@ namespace Part_6___Loops
         }
         static void Main(string[] args)
         {
-            int response;
-            Console.WriteLine("type a number for the following program:");
-            Console.WriteLine();
-            Console.WriteLine("[1] Numbers");
-            Console.WriteLine("[2] Blorb ATM (W.I.P)");
-            Console.WriteLine("[3] Dice Game (W.I.P)");
-            Int32.TryParse(Console.ReadLine(), out response);
-            while(true)
-            {
-
-            
-                if (response == 1)
-                {
-                    Console.Clear();
-                    number();
-                    break;
-                }
-                else if (response == 2)
-                {
-                    Console.Clear();
-                    Blorb();
-                    break;
-                }
-                else if (response == 3)
-                {
-                    Console.WriteLine("work in progress");
-                    
-                }
-                else
-                {
-                    Console.WriteLine("not a number/out of selection range. try again");
-                }
-            }
+            bMenu();
 
         }
     }
