@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Part_6___Loops.Class1;
 
 namespace Part_6___Loops
 {
@@ -15,7 +16,7 @@ namespace Part_6___Loops
             Console.WriteLine("type a number for the following program:");
             Console.WriteLine();
             Console.WriteLine("[1] Numbers");
-            Console.WriteLine("[2] Blorb ATM (W.I.P)");
+            Console.WriteLine("[2] Blorb ATM");
             Console.WriteLine("[3] Dice Game (W.I.P)");
             Int32.TryParse(Console.ReadLine(), out response);
             while (true)
@@ -36,11 +37,9 @@ namespace Part_6___Loops
                 }
                 else if (response == 3)
                 {
-                    Console.WriteLine("work in progress");
-                    Console.WriteLine("press Enter to go back");
-                    Console.ReadLine();
                     Console.Clear();
-                    bMenu();
+                    dice();
+                    break;
 
                 }
                 else
@@ -140,10 +139,11 @@ namespace Part_6___Loops
                     {
                     int act3answer;
                         Console.Clear();
-                        Console.WriteLine("pay bill of 100$? \\ enter 1 for yes / 2 for no");
+                        Console.WriteLine("pay bill of 100$? enter 1 for yes / 2 for no");
                         currentBal = (int)(currentBal - 0.75);
                     if (Int32.TryParse(Console.ReadLine(), out act3answer) && act3answer == 1 && currentBal >= 100)
                     {
+                        currentBal = currentBal - 100;
                         Console.WriteLine("Bill paid");
                         Console.WriteLine("Press enter to go back");
                         Console.ReadLine();
@@ -228,12 +228,35 @@ namespace Part_6___Loops
         }
         static public void dice()
         {
+            Die die1, die2;
+            die1 = new Die();
+            System.Threading.Thread.Sleep(500);
+            die1.Color = ConsoleColor.Green;
+            die2 = new Die();
+            die2.Color = ConsoleColor.Red;
+            while (true)
+            {
+                die1.rollDie();
+                die2.rollDie();
+
+                die2.drawRoll();
+
+                die1.drawRoll();
+                Console.WriteLine("         ");
+                Console.WriteLine("---------");
+                Console.WriteLine("         ");
+
+                if (die1.Roll == die2.Roll)
+                {
+                    Console.WriteLine("doubles");
+                    break ;
+                }
+            }
 
         }
         static void Main(string[] args)
         {
             bMenu();
-
         }
     }
 }
